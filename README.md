@@ -295,4 +295,7 @@ Clone Over/Staging - destination is git hybrid
 
 
 # orzechheating
+<<<<<<< HEAD
 # orzechheating
+=======
+>>>>>>> c922bf436a521c10d14e7a9f38af89e25e31d23b
