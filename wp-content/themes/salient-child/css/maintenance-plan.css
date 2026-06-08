@@ -1,0 +1,364 @@
+.page-hero.half-angled-white.maintenance-plan h1  {
+  color:#1C1C1C;
+  font-size: 64px !important;
+  font-weight: 900;
+  line-height: 1  !important;
+  letter-spacing: 1.72px;
+}
+.page-hero.half-angled-white.maintenance-plan h1 .inter {
+  color: #0077CE;
+  font-family: "Inter", sans-serif !important;
+  font-size: 52px !important;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1  !important;
+  letter-spacing: -1.28px;
+}
+.page-hero.half-angled-white.maintenance-plan  p {
+  font-weight: 400;
+  font-size: 18px !important;
+}
+.page-hero.half-angled-white.maintenance-plan  #overline p {
+  margin-bottom: 0!important;
+  color: #1C1C1C;
+  font-size: 20px !important;
+  font-style: normal;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.4px;
+}
+.page-hero.half-angled-white.maintenance-plan  #overline,
+.page-hero.half-angled-white.maintenance-plan .underline-title p,
+.page-hero.half-angled-white.maintenance-plan  #overline p {
+  margin-bottom: 0!important;
+}
+.page-hero.half-angled-white.maintenance-plan .underline-title p{
+  color: #1C1C1C;
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.56px;
+}
+.page-hero.half-angled-white.maintenance-plan .underline-tibtntle p{
+  color: #1C1C1C;
+  font-family: "Inter", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  margin-top: 24px !important;
+}
+.inter {
+  font-family: "Inter", sans-serif !important;
+}
+@media screen and (min-width: 960px) {
+  .page-hero.half-angled-white.maintenance-plan  p {
+    font-size: 25px !important;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .page-hero.half-angled-white.maintenance-plan h1 {
+    font-size: 86px !important;
+  }
+  .page-hero.half-angled-white.maintenance-plan h1 .inter {
+    font-size: 64px !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .page-hero.half-angled-white.maintenance-plan h1 {
+    font-size: 48px !important;
+  }
+  .page-hero.half-angled-white.maintenance-plan h1 .inter {
+    font-size: 48px !important;
+  }
+}
+.maintenance-plan-plans .price-row.green .nectar-hor-list-item .nectar-list-item:last-child::after {
+    color: white !important;
+}
+@media screen and (min-width: 1000px) and (max-width:1060px) {
+    .maintenance-plan-plans .green.price-row .nectar-hor-list-item .nectar-list-item:last-child:before {
+        position: absolute;
+        top: -5px;
+        margin: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.maintenance-plan-repair-costs  .title-row .nectar-hor-list-item[data-hover-effect=full_border]:hover,
+.maintenance-plan-repair-costs  .title-row .nectar-hor-list-item[data-hover-effect=full_border] {
+  border: none;
+  padding-bottom: 0;
+  color: #1C1C1C;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: none !important;
+}
+.maintenance-plan-repair-costs  .title-row .nectar-hor-list-item .nectar-list-item:last-child {
+  color: #0077CE;
+  font-style: italic;
+}
+.maintenance-plan-repair-costs.mobile-row .nectar-hor-list-item .nectar-list-item:last-child {
+  color: #0077CE !important;
+  font-style: italic;
+}
+.maintenance-plan-repair-costs.mobile-row .price-row .nectar-hor-list-item .nectar-list-item:first-child {
+    font-size: 27px !important;
+}
+.maintenance-plan-repair-costs  .title-row .nectar-hor-list-item .nectar-list-item:last-child:after {
+  content: 'Plan';
+  color: #E31837;
+}
+.maintenance-plan-repair-costs.mobile-row .nectar-hor-list-item .nectar-list-item:last-child:after {
+  content: 'Plan: FREE';
+  color: #E31837;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item:hover {
+    border: 1px solid black !important;
+}
+.maintenance-plan-repair-costs  .price-row .nectar-hor-list-item {
+  border-radius: 8px;
+  border: 1px solid #F3F4F6;
+  background: #FFF;
+  padding: 24px 32px;
+  color: #1C1C1C;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.maintenance-plan-repair-costs  .price-row .nectar-hor-list-item .nectar-list-item:last-child {
+  color: #E31837;
+}
+.maintenance-plan-repair-costs  .price-row .nectar-hor-list-item .nectar-list-item:first-child {
+  font-size: 18px !important;
+  font-weight: 500;
+}
+.maintenance-plan-repair-costs  .cta-row p{
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.65
+}
+body.material .maintenance-plan-repair-costs .cta-row .nectar-button.see-through.accent-color[data-color-override="false"] {
+  padding: 2px 48px !important;
+  font-size: 18px !important;
+}
+@media screen and (min-width: 960px) {
+  body.material .maintenance-plan-repair-costs .cta-row .nectar-button.see-through.accent-color[data-color-override="false"] {
+    padding: 5px 64px !important;
+    font-size: 22px !important;
+  }
+}
+
+.maintenance-plan-plans .toggles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
+.maintenance-plan-plans .toggles .toggle {
+  border-radius: 10px;
+  border: 1px solid #F3F4F6 !important;
+  padding: 0  24px;
+}
+.maintenance-plan-plans .toggles .toggle > .toggle-title a {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  color: #101828;
+  font-size: 18px !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: 2.28;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.maintenance-plan-plans .toggles .toggle > .toggle-title a:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('img/clock.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(2) > .toggle-title a:before {
+  background-image: url('img/shield.svg');
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(3) > .toggle-title a:before {
+  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/wrench.svg');
+}
+/*@media screen and (max-width: 768px){*/
+/*.maintenance-plan-plans .toggles .toggle:nth-child(3) > .toggle-title a:before {*/
+/*  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/wrench-2.svg') !important;*/
+/*}*/
+/*.maintenance-plan-plans .toggles .toggle:nth-child(6) > .toggle-title a:before {*/
+/*  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/tag-4.svg') !important;*/
+/*}*/
+/*.maintenance-plan-plans .toggles .toggle:nth-child(7) > .toggle-title a:before {*/
+/*  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/clipboard-list.svg') !important;*/
+/*}*/
+/*.maintenance-plan-plans .toggles .toggle:nth-child(8) > .toggle-title a:before {*/
+/*  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/columns-4-2.svg') !important;*/
+/*}*/
+/*}*/
+.maintenance-plan-plans .toggles .toggle:nth-child(4) > .toggle-title a:before {
+  background-image: url('img/dollar-sign.svg');
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(5) > .toggle-title a:before {
+  background-image: url('img/settings.svg');
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(6) > .toggle-title a:before {
+  background-image: url('https://orzechheating.ca/wp-content/uploads/2026/04/tag.svg');
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(7) > .toggle-title a:before {
+  background-image: url('img/clipboard-list.svg');
+}
+.maintenance-plan-plans .toggles .toggle:nth-child(8) > .toggle-title a:before {
+  background-image: url('img/columns-4.svg');
+}
+.maintenance-plan-plans .toggles .inner-toggle-wrap {
+  color: #333;
+  font-size: 14px;
+  font-weight: 400 !important;
+  line-height: 1.8;
+}
+.maintenance-plan-plans  .toggle.default > .toggle-title i {
+  border: none !important;
+}
+.maintenance-plan-plans .toggles--minimal-shadow .toggle:before {
+  box-shadow: none !important;
+}
+
+.maintenance-plan-plans .price-row {
+  position: relative;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  padding: 22px 24px;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top:50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 41.398px;
+  border-radius: 0 16777200px 16777200px 0;
+  opacity: 0.6;
+  background: #E31837;
+}
+.maintenance-plan-plans .price-row.blue-2 .nectar-hor-list-item::before {
+  background: #0067B1;
+}
+.maintenance-plan-plans .price-row.red .nectar-hor-list-item::before {
+    background-color: #E31837 !important;
+}
+.maintenance-plan-plans .price-row.green .nectar-hor-list-item::before {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.maintenance-plan-plans .price-row.green .nectar-hor-list-item {
+    background-color: #007A57 ;
+    color: white !important;
+}
+.maintenance-plan-plans .price-row.green .nectar-hor-list-item .nectar-list-item:last-child{
+    color: white !important;
+}
+.maintenance-plan-plans .price-row.green::before {
+  background: #007A57;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item img.item-icon.large {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.maintenance-plan-plans .price-row.green {
+  color: #007A57;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item .nectar-list-item:first-child  {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 18px; /* 120% */
+  letter-spacing: 0.7px;
+  white-space: nowrap;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item .nectar-list-item:last-child  {
+  color: #101828;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1 !important;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+@media screen and (max-width: 1250px){
+    .maintenance-plan-plans .price-row .nectar-hor-list-item .nectar-list-item:last-child  {
+  font-size: 18px !important;
+}
+}
+@media screen and (max-width: 400px){
+
+.maintenance-plan-plans .price-row .nectar-hor-list-item {
+    display: flex;
+    flex-direction: column;
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item .nectar-list-item:last-child {
+        margin-left: 12%;
+        justify-content: flex-start !important;
+}
+    
+}
+.maintenance-plan-plans .price-row .nectar-hor-list-item .nectar-list-item:last-child:after  {
+  content: '/mo';
+  color: #99A1AF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4 !important;
+  padding-left: 3px;
+  margin-top: 3px;
+  display: inline-block;
+}
+.maintenance-plan-plans .green.price-row .nectar-hor-list-item .nectar-list-item:last-child:before  {
+  content: 'SAVE 30%';
+  color: #FFF;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100000px;
+  align-self: center;
+  background: #339579;
+  margin-right: 10px;
+}
+.maintenance-plan-plans .toggle-title {
+  color: #484848;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 2.28;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 550px) {
+  .maintenance-plan-plans .green.price-row .nectar-hor-list-item{ 
+    position: relative;
+  }
+  .maintenance-plan-plans .green.price-row .nectar-hor-list-item .nectar-list-item:last-child {
+    position: unset;
+  }
+  .maintenance-plan-plans .green.price-row .nectar-hor-list-item .nectar-list-item:last-child:before {
+    position: absolute;
+    top: -5px;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

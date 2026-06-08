@@ -1,0 +1,11 @@
+// Header overrides written in SCSS go here.
+// Existing header styles previously lived in style.css — moved here.
+
+/* HEADER NAVIGATION */
+#header-secondary-outer {
+  background: #255b94;
+  color: #fff;
+}
+#header-secondary-outer nav > div {
+  padding-top: 13px !important;
+}

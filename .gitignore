@@ -1,0 +1,55 @@
+# Core - Do not track WordPress core files
+/wp-admin/
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+/local-xdebuginfo.php
+
+# Configuration
+wp-config.php
+
+# Content - Ignore default directories but allow custom items
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-content/backups/
+/wp-content/wp-rocket-config/
+/wp-content/advanced-cache.php
+/wp-content/index.php
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+
+# Third-party themes (not custom - managed separately)
+/wp-content/themes/twenty*/
+/wp-content/themes/salient/
+
+# Third-party plugins (managed separately, includes premium/licensed plugins)
+/wp-content/plugins/*
+
+
+# Theme node_modules (build dependencies - not tracked in git)
+/wp-content/themes/salient-child/node_modules/
+
+# Sass cache
+.sass-cache/
+
+# Zip files (theme exports, not needed in version control)
+*.zip
+
+# All-in-One WP Migration backups (large binary files)
+/wp-content/ai1wm-backups/*.wpress
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Logs and environment
+*.log
+.htaccess
+.env
+# Dependencies
+node_modules/
+wp-content/themes/salient-child/node_modules/

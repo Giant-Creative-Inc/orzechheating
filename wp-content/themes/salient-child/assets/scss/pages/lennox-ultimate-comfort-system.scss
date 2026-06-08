@@ -1,0 +1,662 @@
+@import '../variables';
+@import '../mixin';
+.vc_row.nectar_section>.row_col_wrap_12 {
+  padding: 0;
+}
+[class*="lennox-promo__"] {
+  &.vc_row:not(section) > .row_col_wrap_12 {
+    padding: 40px 0;
+    @include tablet {
+      padding: 50px 0;
+    }
+    @include sm_desktop {
+      padding: 64px 0;
+    }
+    @include desktop {
+      padding: 120px 0;
+    }
+  }
+  .force-desktop-text-align-center {
+    .kicker {
+      justify-content: center;
+    }
+  }
+  @include tablet_down {
+    .force-tablet-text-align-center {
+      .kicker {
+      justify-content: center;
+      text-align: center;
+
+      }
+    }
+  }
+  .kicker {
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
+      box-shadow: 0 2px 1px 0 rgba(255, 255, 255, 0.25) inset;
+    }
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Inter;
+    font-size: 12px !important;
+    font-weight: 400;
+    line-height: 120%; /* 21.6px */
+    letter-spacing: -0.72px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 9.09%, #000 87.34%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @include mobile {
+      font-size: 14px !important;
+    }
+    @include tablet {
+      font-size: 16px !important;
+      gap: 6px;
+    }
+    @include desktop {
+      font-size: 18px !important;
+      gap: 8px;
+    }
+  }
+  h2,
+  h1 {
+    font: 700 32px/1.05 "Inter", sans-serif !important;
+    letter-spacing: -2.56px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 9.09%, #000 87.34%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0 !important;
+    font-optical-sizing: auto;
+    margin-bottom: -0.05em;
+    @include tablet {
+      font: 700 52px/1.05 "Inter", sans-serif !important;
+    }
+    @include sm_desktop {
+      font: 700 58px/1.05 "Inter", sans-serif !important;
+    }
+    @include desktop {
+      font: 700 64px/1.05 "Inter", sans-serif !important;
+    }
+  }
+  h2 {
+    @include tablet {
+      font: 700 40px/1.05 "Inter", sans-serif !important;
+    }
+    @include tablet {
+      font: 700 48px/1.05 "Inter", sans-serif !important;
+    }
+    @include sm_desktop {
+      font: 700 52px/1.05 "Inter", sans-serif !important;
+    }
+  }
+  h4,
+  h3 {
+    font: 700 20px/1 "Inter", sans-serif !important;
+    color: #000;
+    letter-spacing: -1.12px !important;
+    text-transform: none !important;
+    @include tablet {
+      font: 700 24px/1 "Inter", sans-serif !important;
+    }
+    @include sm_desktop {
+      font: 700 26px/1 "Inter", sans-serif !important;
+    }
+    @include desktop {
+      font: 700 28px/1 "Inter", sans-serif !important;
+    }
+  }
+  .iwithtext,
+  .wpb_text_column:not(.hero-subtext):not(.large):not(.kicker) {
+    color: #1C1C1C !important;
+    font: 400 16px/1.5 "Inter", sans-serif !important;
+    letter-spacing: -0.8px;
+    @include tablet {
+      font: 400 18px/1.5 "Inter", sans-serif !important;
+    }
+    @include desktop {
+      font: 400 20px/1.5 "Inter", sans-serif !important;
+    }
+  }
+  .wpb_text_column.hero-subtext {
+    color: #000;
+    font: 700 20px/1 "Inter", sans-serif !important;
+    letter-spacing: -1.28px;
+    @include tablet {
+      font: 700 28px/1 "Inter", sans-serif !important;
+    }
+    @include desktop {
+      font: 700 32px/1 "Inter", sans-serif !important;
+    }
+  }
+  .wpb_text_column.large {
+    color: #1C1C1C !important;
+    font: 500 18px/1.2 "Inter", sans-serif !important;
+    letter-spacing: -0.88px;
+    @include tablet {
+      font: 500 20px/1.2 "Inter", sans-serif !important;
+    }
+    @include desktop {
+      font: 500 22px/1.2 "Inter", sans-serif !important;
+    }
+  }
+  .gform_footer .gform_button input[type=submit],
+  .link_wrap {
+    background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
+    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
+    @include mobile {
+      padding: 14px 24px !important
+    }
+    a {
+      font: 600 14px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.64px;
+      background: linear-gradient(180deg, #FFF 33.33%, rgba(255, 255, 255, 0.75) 74.07%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @include tablet {
+        font-size: 16px !important;
+      }
+      @include desktop {
+        font-size: 16px !important;
+      }
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+body[data-form-submit=regular] .container-wrap .lennox-promo {
+  &__first-section {
+    > .row-bg-wrap .row-bg {
+      background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 50%, #F6F6F6 100%), linear-gradient(180deg, #F6F6F6 0%, rgba(255, 255, 255, 0.00) 43.05%);
+      .row-bg-img {
+        object-fit: contain !important;
+        @include mobile {
+          top: 5%;
+        }
+        @include tablet {
+          top: 5%;
+        }
+        @include desktop_4k {
+          top: -5%;
+        }
+      }
+    }
+  }
+  &__hero {
+    @include mobile {
+      > .row_col_wrap_12 {
+        padding-bottom: 180px !important;
+      }
+    }
+    @include tablet {
+      > .row_col_wrap_12 {
+        padding-top: 48px !important;
+        padding-bottom: 260px !important;
+      }
+    }
+    @include desktop {
+      > .row_col_wrap_12 {
+        padding-top: 64px !important;
+        padding-bottom: 140px !important;
+      }
+    }
+    @include desktop_4k {
+      > .row_col_wrap_12 {
+        padding-top: 64px !important;
+        padding-bottom: 300px !important;
+      }
+    }
+    .wpb_text_column.hero-subtext p {
+      margin-bottom: 12px;
+      @include desktop {
+        margin-bottom: 48px;
+      }
+    }
+    .underlined-content {
+      position: relative;
+      display: inline-block;
+      &::after {
+        content: "";
+        position: absolute;
+        left: -3%;
+        top: 99%;
+        background: url('https://staging.orzechheating.ca/wp-content/uploads/2026/06/underline.svg') no-repeat 0 0;
+        background-size: contain;
+        width: 95%;
+        height: 30px;
+      }
+    }
+  }
+  &__claim-deal {
+    .wpb_text_column.wpb_content_element.hero-h2 {
+      margin-bottom: 4px !important;
+    }
+    h2 {
+      font: 700 32px/1.27 "Inter", sans-serif !important;
+      text-align: center;
+      letter-spacing: -1.68px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 9.09%, #000 87.34%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @include tablet {
+        font: 700 36px/1.27 "Inter", sans-serif !important;
+      }
+      @include desktop {
+        font: 700 42px/1.27 "Inter", sans-serif !important;
+      }
+    }
+    .wpb_text_column.wpb_content_element.large {
+      font: 400 16px/1.2 "Inter", sans-serif !important;
+      letter-spacing: -0.8px;
+      text-align: center;
+      color: #1C1C1C !important;
+      a {
+        font-weight: 700 !important;
+        color: #1C1C1C !important;
+        &:hover {
+          color: #E31837 !important;
+        }
+      }
+      @include tablet_up {
+        font: 400 28px/1.2 "Inter", sans-serif !important;
+      }
+      @include desktop {
+        font: 400 20px/1.2 "Inter", sans-serif !important;
+      }
+    }
+    .gform-theme--foundation .gform_fields {
+      gap: 4px;
+    }
+    .gform_required_legend {
+      display: none;
+    }
+    label {
+      font: 400 16px/1.5 "Inter", sans-serif !important;
+      color: #000;
+      letter-spacing: -0.64px;
+    }
+    select, input[type="text"], input[type="email"], input[type="tel"] {
+      border: none !important;
+      border-radius: 4px;
+      background: #F6F6F6;
+      color: #505050;
+      &::placeholder {
+        color: #505050 !important;
+      }
+    }
+    .gform_footer {
+      justify-content: center;
+    }
+    .gform_footer input[type=submit] {
+      border-radius: 1000px !important;
+      border: none !important;
+      background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
+      box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
+      padding: 16px 32px !important;
+      color: #fff;
+      font: 600 14px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.64px;
+      @include mobile {
+        padding: 14px 24px !important
+      }
+      @include tablet_up {
+        font-size: 16px !important;
+      }
+      &:hover {
+        opacity: 0.8 !important;
+        color: #fff !important;
+      }
+    }
+    .wpb_text_column.wpb_content_element.trust {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin-top: 32px !important;
+      p {
+        padding-bottom: 0;
+        color: #2B3839;
+        font-size: 16px;
+        line-height: 120%; /* 19.2px */
+        letter-spacing: -0.64px;
+        img {
+          margin: 0;
+        }
+      }
+    }
+    h3 {
+      font: 700 24px/1.2 "Inter", sans-serif !important;
+      letter-spacing: -1.28px !important;
+      @include tablet {
+        font: 700 28px/1.2 "Inter", sans-serif !important;
+      }
+      @include desktop {
+        font: 700 32px/1.2 "Inter", sans-serif !important;
+      }
+    }
+    h4 {
+      font: 700 18px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.8px !important;
+      @include desktop {
+        font: 700 20px/1.5 "Inter", sans-serif !important;
+      }
+    }
+    .iwithtext {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      margin-bottom: 0 !important;
+      @include desktop {
+        gap: 8px;
+      }
+      .iwt-icon {
+        display: flex;
+        margin-left: -6px;
+        min-width: 32px !important;
+        @include desktop {
+          margin-left: -10px;
+        }
+        img:not([srcset]) {
+          width: 32px !important;
+          height: 32px !important;
+          margin: 0;
+          @include tablet_down {
+            margin-top: -4.5px;
+          }
+        }
+        @include desktop {
+          min-width: 54px !important;
+          img:not([srcset]) {
+            width: 54px !important;
+            height: 54px !important;
+          }
+        }
+        position: relative;
+      }
+      .iwt-text {
+        padding-left: 0;
+      }
+    }
+  }
+  &__whats-included {
+    .flickity-slider .inner-wrap {
+      padding: 32px 24px !important;
+    }
+    .nectar-flickity.nectar-carousel.nectar-carousel:not(.masonry) .flickity-viewport {
+      margin-bottom: 0 !important;
+    }
+    .flickity-enabled {
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      @include desktop {
+        padding-bottom: 54px;
+      }
+    }
+    button.flickity-button.flickity-prev-next-button {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      top: 100%;
+      transform: scale(1.2);
+      &:hover{
+        opacity: 0.8;
+        &::before {
+          transform: none !important;
+        }
+      }
+    }
+    button.flickity-button.flickity-prev-next-button:before {
+      border-radius: 12px;
+      background: #F6F6F6;
+    }
+    button.flickity-button.flickity-prev-next-button.previous {
+      left: auto;
+      right: 66px;
+      &:hover {
+        &:after {
+          background-color: #000;
+        }
+        .arrow {
+          fill: #000;
+        }
+      }
+    }
+    button.flickity-button.flickity-prev-next-button.next {
+      right: 0;
+      &:before {
+        border-radius: 12px;
+        background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
+        box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
+      }
+      &:after {
+        background-color: #fff;
+      }
+      .arrow {
+        fill: #fff;
+      }
+    }
+  }
+  &__features-boxes {
+    .vc_col-sm-4 {
+      .wpb_row {
+        width: 55%;
+      }
+      &:last-of-type {
+        .img-with-aniamtion-wrap {
+          img {
+            width: 123% !important;
+            max-width: none;
+            margin-left: -23%;
+          }
+        }
+      }
+      .img-with-aniamtion-wrap {
+        align-self: flex-end;
+        max-width: 45%;
+      }
+    }
+  }
+  &__why-us,
+  &__difference-list {
+    .iwithtext {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 0 !important;
+      .iwt-icon {
+        min-width: 16px;
+        display: flex;
+        padding-top: 4px;
+        img:not([srcset]) {
+          width: 16px;
+          height: 16px;
+          aspect-ratio: 1/1;
+          margin: 0;
+        }
+        @include desktop {
+          min-width: 22px;
+          display: flex;
+          padding-top: 4px;
+          img:not([srcset]) {
+            width: 22px;
+            height: 22px;
+          }
+        }
+        position: relative;
+      }
+      .iwt-text {
+        padding-left: 0;
+      }
+      &:not(:last-child) {
+        padding-bottom: 18px !important;
+      }
+    }
+    .green {
+      h3,
+      p {
+        color: #fff;
+      }
+      .iwt-text {
+        color: #fff;
+      }
+    }
+  }
+  &__why-us {
+    .vc_col-sm-7 {
+      .row_col_wrap_12_inner,
+      .wpb_wrapper,
+      .wpb_column {
+        h3,.img-with-aniamtion-wrap {
+          margin-bottom:24px;
+        }
+        height: 100%;
+        .nectar-cta {
+          margin: auto 0 0;
+        }
+      }
+    }
+    .vc_col-sm-7 > .vc_column-inner > .wpb_wrapper > .img-with-aniamtion-wrap {
+      align-self: flex-end;
+      margin-bottom: 0 !important;
+      @include mobile {
+        img {
+          margin-top: -23%;
+        }
+      }
+      @include tablet_up {
+        img {
+          width: 123% !important;
+          max-width: none;
+          margin-left: -23%;
+        }
+      }
+    }
+    .link_wrap {
+      &::before {
+        content: '';
+        width: 22px;
+        height: 22px;
+        aspect-ratio: 1/1;
+        margin-right: 6px;;
+        background: url('https://staging.orzechheating.ca/wp-content/uploads/2026/06/Chat-1.svg') no-repeat center;
+      }
+    }
+  }
+  &__testimonials {
+    h2 {
+      min-width: 380px;
+    }
+    .ti-reviews-container {
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      @include desktop {
+        padding-bottom: 54px;
+      }
+    }
+    .ti-widget.ti-goog .ti-controls-line {
+      display: none !important;
+    }
+    .ti-controls {
+      display: block;
+      top: 100% !important;
+      .ti-next,
+      .ti-prev {
+        display:block !important;
+        border-radius: 12px;
+        background-color: #F6F6F6;
+        padding: 16px;
+        width: 52px;
+        height: 52px;
+        border: none;
+        outline: none !important;
+        &:focus,
+        &:hover {
+          opacity: 0.8;
+          outline: none;
+        }
+        &:after {
+          background-color: #000;
+          position: absolute;
+          height: 2.5px;
+          top: 50%;
+          margin-top: -1.2px;
+          width: 15px;
+          content: '';
+          transition: transform .45s cubic-bezier(.15, .75, .5, 1);
+          display: block;
+        }
+        &:before {
+          border-color: #000;
+          border-bottom-width: 2px;
+          border-left-width: 2px;
+        }
+      }
+      .ti-next {
+        right: 12px;
+        background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
+        box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
+        &:before {
+          border-color: #fff;
+          right: 18.9px;
+          transform: translate(-70%, -49%) rotate(-135deg);
+          margin-left: 6px;
+        }
+        &:after {
+          background-color: #fff;
+          margin-left: 4px;
+        }
+      }
+      .ti-prev {
+        right: 78px;
+        left: auto;
+        &:before {
+          left: 18.9px;
+          transform: translate(-30%, -49%) rotate(45deg);
+        }
+        &:focus:before,
+        &:hover:before {
+          border-color: #000 !important;
+        }
+      }
+    }
+  }
+  &__faq {
+    .vc_col-sm-4 {
+      h3 {
+        font: 700 20px/1.16 "Inter", sans-serif !important;
+        letter-spacing: -0.96px !important;
+        margin-bottom: 12px;
+        @include tablet {
+          font: 700 22px/1.16 "Inter", sans-serif !important;
+        }
+        @include desktop {
+          font: 700 24px/1.16 "Inter", sans-serif !important;
+        }
+      }
+      p {
+        letter-spacing: -0.72px;
+        line-height: 1.55;
+      }
+    }
+  }
+  &__disclamer {
+    .disclamer-text {
+      font: 400 10px/1.5 "Inter", sans-serif !important;
+      color: #565656;
+      letter-spacing: -0.56px;
+      @include desktop {
+        font: 400 14px/1.5 "Inter", sans-serif !important;
+      }
+    }
+  }
+}
