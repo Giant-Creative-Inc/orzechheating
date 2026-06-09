@@ -186,7 +186,10 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
           top: 5%;
         }
         @include desktop_4k {
-          top: -5%;
+          top: -8%;
+        }
+        @media (min-width: 1500px) and (max-height: 920px) {
+          top: -6%;
         }
       }
     }
@@ -206,13 +209,24 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
     @include desktop {
       > .row_col_wrap_12 {
         padding-top: 64px !important;
-        padding-bottom: 140px !important;
+        padding-bottom: 100px !important;
+      }
+    }
+    @include sm_desktop {
+      > .row_col_wrap_12 {
+        padding-top: 64px !important;
+        padding-bottom: 20px !important;
       }
     }
     @include desktop_4k {
       > .row_col_wrap_12 {
         padding-top: 64px !important;
-        padding-bottom: 300px !important;
+        padding-bottom: 200px !important;
+      }
+    }
+    @media (min-width: 1500px) and (max-height: 920px) {
+      > .row_col_wrap_12 {
+        padding-bottom: 0px !important;
       }
     }
     .wpb_text_column.hero-subtext p {
