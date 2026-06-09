@@ -179,7 +179,15 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
     > .row-bg-wrap .row-bg {
       background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 50%, #F6F6F6 100%), linear-gradient(180deg, #F6F6F6 0%, rgba(255, 255, 255, 0.00) 43.05%);
       .row-bg-img {
-        object-fit: contain !important;
+        @media screen and (max-width: 2200px) {
+          object-fit: contain !important;
+        }
+        @media screen and (min-width: 2200px) {
+          object-position: center center !important;
+        }
+        @media (min-width: 1600px) and (max-width: 2200px) {
+          top: -6%;
+        }
         @include mobile {
           top: 6%;
         }
@@ -188,9 +196,6 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         }
         @include tablet {
           top: 5%;
-        }
-        @include desktop_4k {
-          top: -8%;
         }
         @media (min-width: 1500px) and (max-height: 920px) {
           top: -6%;
@@ -483,7 +488,6 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
             max-width: 43%;
           }
         }
-
       }
       .img-with-aniamtion-wrap {
         align-self: flex-end;
