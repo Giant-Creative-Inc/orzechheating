@@ -149,8 +149,9 @@
   }
   .gform_footer .gform_button input[type=submit],
   .link_wrap {
-    background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%);
-    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
+    border-radius: 1000px !important;
+    background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%) !important;
+    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset !important;
     @include mobile {
       padding: 14px 24px !important
     }
