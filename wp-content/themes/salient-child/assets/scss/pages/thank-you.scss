@@ -66,7 +66,7 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
           object-position: center 80% !important;
         }
         @include tablet {
-          object-position: center 20% !important;
+          object-position: center 0% !important;
         }
       }
     }
@@ -116,7 +116,7 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         position: absolute;
         left: -3%;
         top: 99%;
-        background: url('https://staging.orzechheating.ca/wp-content/uploads/2026/06/underline.svg') no-repeat 0 0;
+        background: url('https://orzechheating.ca/wp-content/uploads/2026/06/underline.svg') no-repeat 0 0;
         background-size: contain;
         width: 95%;
         height: 30px;
