@@ -483,6 +483,18 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
               max-width: none;
               margin-left: -23%;
             }
+            @include desktop {
+              width: 111% !important;
+              margin-left: -11%;
+            }
+            @include xl_desktop {
+              width: 120% !important;
+              margin-left: -20%;
+            }
+            @include desktop_4k {
+              width: 123% !important;
+              margin-left: -23%;
+            }
           }
           @include mobile {
             max-width: 43%;
