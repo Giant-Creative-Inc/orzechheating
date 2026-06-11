@@ -595,6 +595,11 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         background: url('https://staging.orzechheating.ca/wp-content/uploads/2026/06/Chat-1.svg') no-repeat center;
       }
     }
+    .why-choose-video-bg {
+      .yt-bg-inner iframe {
+        transform: translateX(-25%);
+      }
+    }
   }
   &__testimonials {
     h2 {
