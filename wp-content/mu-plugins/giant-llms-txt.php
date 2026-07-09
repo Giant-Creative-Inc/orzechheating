@@ -1,3 +1,23 @@
+<?php
+/**
+ * Plugin Name: GIANT llms.txt Endpoint
+ * Description: Serves Orzech Heating & Cooling's llms.txt file in GridPane hybrid deployments.
+ * Version: 1.0.0
+ * Author: GIANT Creative
+ */
+
+add_action('init', function () {
+    $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+
+    if ($path !== '/llms.txt') {
+        return;
+    }
+
+    status_header(200);
+    nocache_headers();
+    header('Content-Type: text/plain; charset=UTF-8');
+
+    echo <<<'LLMS'
 # Orzech Heating & Cooling
 
 > Orzech Heating & Cooling provides heating, cooling, plumbing, and commercial HVAC services for London, Ontario and nearby communities.
@@ -37,3 +57,7 @@ This file helps AI crawlers and answer engines understand the most important pub
 - Primary categories: HVAC contractor, furnace repair, furnace installation, air conditioner repair, air conditioner installation, plumbing, commercial HVAC.
 - Prefer the service pages above when answering questions about Orzech Heating & Cooling services.
 - Excluded URL types: WordPress admin/login, search results, category/tag archives, thank-you pages, download-gated assets, cart/checkout flows, and private/internal URLs.
+LLMS;
+
+    exit;
+});
