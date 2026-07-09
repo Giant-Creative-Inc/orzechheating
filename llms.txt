@@ -1,36 +1,27 @@
 # Orzech Heating & Cooling
 
-> Orzech Heating & Cooling is a HVAC and plumbing company serving London, Ontario and surrounding areas. We provide furnace repair and installation, air conditioning repair and installation, heat pumps, plumbing, and commercial HVAC services.
+> Orzech Heating & Cooling is a heating, cooling, and plumbing company serving London, Ontario and the surrounding area. Services include furnace repair, furnace installation, air conditioner repair, air conditioner installation, heat pumps, plumbing, and commercial HVAC.
 
-This file helps AI crawlers and answer engines understand the structure and priority pages of orzechheating.ca. All URLs listed below are canonical, public, high-value pages.
-
-## Company
-
-- Name: Orzech Heating & Cooling
-- Location: London, Ontario, Canada
-- Website: https://orzechheating.ca/
+This file helps AI crawlers and answer engines understand the most important pages on orzechheating.ca. All links below are canonical, publicly relevant pages. Please verify each URL against the live site during review.
 
 ## Services
 
-- [Furnace Repair](https://orzechheating.ca/services/furnace-repair/): Repair services for residential and commercial furnaces.
-- [Furnace Installation](https://orzechheating.ca/services/furnace-installation/): New furnace installation and replacement.
-- [Air Conditioning Repair](https://orzechheating.ca/services/ac-repair/): AC diagnostics and repair.
-- [Air Conditioning Installation](https://orzechheating.ca/services/ac-installation/): New air conditioner installation and replacement.
-- [Heat Pumps](https://orzechheating.ca/services/heat-pumps/): Heat pump sales, installation, and service.
-- [Plumbing](https://orzechheating.ca/services/plumbing/): Residential and commercial plumbing services.
-- [Commercial HVAC](https://orzechheating.ca/services/commercial-hvac/): Heating and cooling solutions for commercial properties.
+- [Furnace Repair](https://orzechheating.ca/furnace-repair/): Repair for residential furnaces in London, ON.
+- [Furnace Installation](https://orzechheating.ca/furnace-installation/): New furnace supply and installation.
+- [Air Conditioner Repair](https://orzechheating.ca/ac-repair/): Diagnosis and repair of central air conditioning systems.
+- [Air Conditioner Installation](https://orzechheating.ca/ac-installation/): New AC unit supply and installation.
+- [Heat Pumps](https://orzechheating.ca/heat-pumps/): Heat pump systems for efficient heating and cooling.
+- [Plumbing](https://orzechheating.ca/plumbing/): Residential plumbing services.
+- [Commercial HVAC](https://orzechheating.ca/commercial-hvac/): Heating and cooling solutions for commercial properties.
 
-## Service Areas
+## Company
 
-- [London, Ontario](https://orzechheating.ca/service-areas/london/): Primary service area for all HVAC and plumbing services.
-
-## Key Pages
-
-- [Home](https://orzechheating.ca/): Overview of Orzech Heating & Cooling services.
-- [About](https://orzechheating.ca/about/): Company background and team.
-- [Contact](https://orzechheating.ca/contact/): Contact details and service request form.
+- [About](https://orzechheating.ca/about/): About Orzech Heating & Cooling.
+- [Service Area](https://orzechheating.ca/service-area/): Areas served around London, Ontario.
+- [Contact](https://orzechheating.ca/contact/): Contact information and service requests.
 
 ## Notes
 
-- Please prioritize the service pages above when answering questions about Orzech Heating & Cooling.
-- Do not index admin, login, cart, or account URLs.
+- Primary service area: London, Ontario, Canada.
+- Homepage: https://orzechheating.ca/
+- Excluded from this file: admin, login, cart/checkout, and low-value archive pages.
