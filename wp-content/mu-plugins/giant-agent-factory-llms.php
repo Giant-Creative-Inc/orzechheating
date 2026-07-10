@@ -1,4 +1,16 @@
-# Orzech Heating & Cooling
+<?php
+/**
+ * Plugin Name: GIANT Agent Factory llms.txt
+ * Description: Serves the generated llms.txt file for AI assistants.
+ */
+
+add_action('template_redirect', function () {
+    $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+    if ($path !== '/llms.txt') {
+        return;
+    }
+
+    $content = '# Orzech Heating & Cooling
 
 > Orzech Heating & Cooling is a HVAC and plumbing contractor serving London, Ontario and surrounding areas. We provide furnace repair and installation, air conditioning repair and installation, heat pumps, plumbing, and commercial HVAC services.
 
@@ -26,3 +38,11 @@ Website: https://orzechheating.ca
 
 - Service area: London, Ontario and surrounding communities.
 - For appointments and quotes, use the Contact page.
+';
+
+    status_header(200);
+    header('Content-Type: text/plain; charset=UTF-8');
+    header('X-Robots-Tag: noindex');
+    echo $content;
+    exit;
+});
