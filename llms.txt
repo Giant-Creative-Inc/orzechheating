@@ -1,0 +1,29 @@
+# Orzech Heating & Cooling
+
+> Orzech Heating & Cooling is a heating, cooling, and plumbing company serving London, Ontario and the surrounding area. We provide furnace repair and installation, air conditioning repair and installation, heat pump services, plumbing, and commercial HVAC solutions.
+
+Business name: Orzech Heating & Cooling
+Location: London, Ontario, Canada
+Website: https://orzechheating.ca/
+Industry: Residential and commercial HVAC and plumbing services
+
+## Services
+
+- [Furnace Repair](https://orzechheating.ca/furnace-repair/): Repair services for residential furnaces in London, ON.
+- [Furnace Installation](https://orzechheating.ca/furnace-installation/): New furnace supply and installation.
+- [AC Repair](https://orzechheating.ca/ac-repair/): Air conditioner diagnostics and repair.
+- [AC Installation](https://orzechheating.ca/ac-installation/): New air conditioning system installation.
+- [Heat Pumps](https://orzechheating.ca/heat-pumps/): Heat pump sales, installation, and service.
+- [Plumbing](https://orzechheating.ca/plumbing/): Residential plumbing repair and installation.
+- [Commercial HVAC](https://orzechheating.ca/commercial-hvac/): Heating and cooling solutions for commercial properties.
+
+## Key Pages
+
+- [Home](https://orzechheating.ca/): Overview of Orzech Heating & Cooling services.
+- [About](https://orzechheating.ca/about/): Company background and service area.
+- [Contact](https://orzechheating.ca/contact/): Phone, address, and service request information.
+
+## Notes
+
+- Preferred contact and booking happen through the Contact page.
+- Service area is centered on London, Ontario and surrounding communities.
