@@ -1,3 +1,0 @@
-GIANT deploy check for task_mrd2qzxpre4vgvs42z
-
-If this file is visible on staging under /wp-content/themes/salient-child/giant-deploy-check.txt, GridPane has pulled the latest task branch into the staging site's deployed theme files.
