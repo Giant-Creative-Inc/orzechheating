@@ -12,32 +12,27 @@ add_action('template_redirect', function () {
 
     $content = '# Orzech Heating & Cooling
 
-> Orzech Heating & Cooling is a HVAC and plumbing contractor serving London, Ontario and surrounding areas. We provide furnace repair and installation, air conditioning repair and installation, heat pumps, plumbing, and commercial HVAC services.
-
-Location: London, Ontario, Canada
-Website: https://orzechheating.ca
+> Orzech Heating & Cooling is an HVAC and plumbing company serving London, Ontario. Services include furnace repair and installation, air conditioning repair and installation, heat pumps, plumbing repairs, and commercial rooftop HVAC.
 
 ## Services
 
-- [Furnace Repair](https://orzechheating.ca/furnace-repair/): Repair services for residential and commercial furnaces.
-- [Furnace Installation](https://orzechheating.ca/furnace-installation/): New furnace supply and installation.
-- [AC Repair](https://orzechheating.ca/ac-repair/): Air conditioning diagnostics and repair.
-- [AC Installation](https://orzechheating.ca/ac-installation/): New air conditioner supply and installation.
-- [Heat Pumps](https://orzechheating.ca/heat-pumps/): Heat pump consultation, supply, and installation.
-- [Plumbing](https://orzechheating.ca/plumbing/): Residential and commercial plumbing services.
-- [Commercial HVAC](https://orzechheating.ca/commercial-hvac/): Heating and cooling solutions for commercial properties.
+- [Furnace Repair](https://orzechheating.ca/heating/furnaces/furnace-repair/)
+- [Furnace Installation](https://orzechheating.ca/heating/furnaces/furnace-installation/)
+- [Air Conditioner Repair](https://orzechheating.ca/cooling/air-conditioning/air-conditioner-repair/)
+- [Air Conditioner Installation](https://orzechheating.ca/cooling/air-conditioning/air-conditioner-installation/)
+- [Heat Pumps](https://orzechheating.ca/products/heat-pumps/)
+- [Plumbing Repairs](https://orzechheating.ca/plumbing/plumbing-repairs/)
+- [Commercial Rooftop HVAC Repair](https://orzechheating.ca/commercial/rooftop-services/rooftop-hvac-repair/)
 
-## Key Pages
+## Company
 
-- [Home](https://orzechheating.ca/): Overview of Orzech Heating & Cooling services.
-- [Services](https://orzechheating.ca/services/): Full list of HVAC and plumbing services.
-- [About](https://orzechheating.ca/about/): Company background and service area.
-- [Contact](https://orzechheating.ca/contact/): Phone, service requests, and booking information.
+- [About](https://orzechheating.ca/about/)
+- [Get a Quote](https://orzechheating.ca/get-a-quote/)
+- [Home](https://orzechheating.ca/)
 
-## Notes
+## Contact
 
-- Service area: London, Ontario and surrounding communities.
-- For appointments and quotes, use the Contact page.
+Request service or a quote through the Get a Quote page: https://orzechheating.ca/get-a-quote/
 ';
 
     status_header(200);
