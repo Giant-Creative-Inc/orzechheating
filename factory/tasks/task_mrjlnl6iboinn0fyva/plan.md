@@ -3,29 +3,30 @@
 Task: task_mrjlnl6iboinn0fyva · Category: technical_seo · Risk: medium
 
 ## Summary
-The multiple-H1 fixes require identifying how each page's headings are rendered (page builder blocks, hero widgets, or template parts) before I can safely demote extra H1s to H2/H3 while preserving visual style. Without repository/template access or the rendered DOM markup for each URL, I cannot author correct, non-destructive template or CSS changes, and the prior QA failure was specifically about missing evidence (H1 counts, hierarchy inspection, content diffs).
+The multiple-H1 issue lives in WordPress page/template markup on a live site (orzechheating.ca) where I do not have the repository's actual template paths, page-builder markup, or the rendered DOM that determines which elements are H1s. The previous run failed QA because no rendered-page evidence (H1 counts, heading outlines, screenshots) was captured. I cannot produce correct template/page edits without knowing where each extra H1 originates (theme header, page-builder module, or page content), so this should be blocked pending that source information.
 
 ## Implementation plan
-1. Capture the rendered DOM of each target URL on staging and record the exact source of every H1 (theme template part, page-builder heading module, or in-page content block) — this is the missing baseline QA flagged.
-2. For each extra H1, determine whether it originates from an editable page-builder heading widget (change its HTML tag from H1 to H2/H3 in the page editor) or from a template part (child-theme override only).
-3. Where the H1 is a page-builder module, the fix is a content/editor setting change (tag level) that keeps identical styling — document the exact block and new tag per page.
-4. Where the H1 comes from a template (e.g., a hero title outputting <h1> on non-front pages), create a child-theme template override that emits <h1> only for the true page title and <h2> for secondary titles, preserving CSS classes for identical appearance.
-5. Take before screenshots (desktop + mobile) of each page, apply changes on the task branch, deploy to staging, clear caches, and take after screenshots.
-6. Produce the before/after page list with H1 counts (before N → after 1) as QA evidence.
+1. Identify, per target URL, the DOM source of every H1 element by fetching the rendered staging HTML and extracting each <h1> with its surrounding template/block context (theme header logo wrap, page title module, hero heading, section headings).
+2. Classify each extra H1: (a) sitewide theme/header source, (b) page-builder/module default heading level, (c) hardcoded page content.
+3. For theme/header-sourced extra H1s, patch the child theme template part only (never parent theme/core); demote non-primary headings to the appropriate H2/H3 while preserving visual size via existing CSS classes.
+4. For page-builder/content-sourced extra H1s, adjust the heading-tag setting on the specific module or edit the page content to demote to H2/H3, keeping the single primary H1 that names the page topic.
+5. Preserve visual hierarchy: any tag change must retain the original font-size/weight via CSS class, not by leaving the H1 tag.
+6. Deploy the task branch to staging via gridpane.deploy_staging, clear all caches, and confirm 200 + no PHP notices in logs.
+7. Capture rendered evidence for QA: per-URL H1 count (must equal 1), full heading outline (H1→H2→H3), and before/after desktop + mobile screenshots.
+8. Produce the before/after page list deliverable from the captured evidence.
 
 ## Affected areas
-- /faqs/ headings
-- /get-a-quote/ headings
-- /maintenance-plan/ headings
-- /financing/ headings
-- Possibly child theme template parts or page-builder heading modules (source TBD)
+- WordPress child theme template parts (header/title area) — exact paths unknown
+- Page-builder module heading settings for /faqs/, /get-a-quote/, /maintenance-plan/, /financing/
+- Page content for the four target pages
+- child theme CSS (to retain visual sizing when demoting tags)
 
 ## QA checklist
-- [ ] Crawl each affected URL and assert exactly one <h1> in the rendered DOM
-- [ ] Compare before/after H1 counts against the recorded baseline (faqs 3→1, get-a-quote 2→1, maintenance-plan 3→1, financing 2→1)
-- [ ] Verify H2/H3 hierarchy remains logical and sequential after demotion
-- [ ] Desktop + mobile screenshots confirm visual heading styling is unchanged
-- [ ] Diff page content to confirm no text/sections were removed — only heading tag levels changed
+- [ ] Crawl each of the four target pages on staging and assert exactly one <h1> per page
+- [ ] Provide the full heading outline (H1/H2/H3 order) per page and confirm it remains logical
+- [ ] Capture desktop + mobile screenshots before and after for visual parity
+- [ ] Diff page text content before/after to confirm no content was removed
+- [ ] Confirm staging returns HTTP 200 and no new PHP notices/fatals in logs after deploy
 
 ## Notes
-BLOCKER: I cannot write correct, non-destructive deliverable files without knowing where each H1 is generated. Required human/tooling action before implementation: (1) provide the rendered HTML (or a DOM inspection) of each of the four URLs identifying each H1 element and its selector/class; (2) state which page-building system is in use (Elementor/Divi/Gutenberg/custom theme) and the child-theme path in the repo; (3) confirm the intended PRIMARY H1 per page (likely: page title for /faqs/, /get-a-quote/, /maintenance-plan/, /financing/). Most of these fixes are page-editor tag-level changes (H1→H2/H3 per heading widget) that live in the WordPress database, not repo files, and therefore need a human to apply them on staging with the mapping I document once the DOM source is provided. Empty proposed_files is intentional per the missing-information rule.
+Blocked pending human/source input. To proceed I need: (1) the repository path(s) for the active child theme and the template part(s) that render page headers/titles; (2) confirmation of which page builder (if any) renders these pages, since builder-stored H1s live in the DB and cannot be changed via PR files — those need staging in-builder edits; (3) the rendered staging HTML for each of the four URLs so I can pinpoint each H1's origin. Producing template/content files without this would repeat the prior failure (unverifiable, possibly wrong file). Once the H1 sources are identified I will return complete, targeted file edits plus the H1-count/screenshot evidence QA requires.
