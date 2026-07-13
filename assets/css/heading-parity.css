@@ -1,0 +1,41 @@
+/*
+ * Heading parity helper for Orzech Heating & Cooling
+ * Task: task_mrjlnl6iboinn0fyva — Fix pages with multiple H1s
+ *
+ * Purpose: When a heading that was incorrectly an <h1> is demoted to <h2>/<h3>
+ * to satisfy the one-H1-per-page rule, this class preserves its original
+ * visual size so the visible heading hierarchy is unchanged.
+ *
+ * Usage: In the page builder / block editor, after changing the HTML tag of a
+ * demoted heading, add the CSS class "h1-visual" (or "h1-visual-sub") to that
+ * element. This changes ONLY appearance, not the semantic tag.
+ *
+ * Load this file from the CHILD THEME only (do not edit parent theme).
+ * Enqueue via functions.php or import into the child theme stylesheet.
+ * Adjust the exact px/rem values on staging to match the site's existing H1.
+ */
+
+/* Matches the site's primary H1 visual weight for a demoted section heading. */
+.h1-visual {
+  font-size: 2.25rem;   /* verify against real H1 on staging, then tune */
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 0.5em 0;
+}
+
+/* Slightly smaller variant for demoted sub-headings if needed. */
+.h1-visual-sub {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0 0 0.4em 0;
+}
+
+@media (max-width: 782px) {
+  .h1-visual {
+    font-size: 1.75rem;
+  }
+  .h1-visual-sub {
+    font-size: 1.4rem;
+  }
+}
