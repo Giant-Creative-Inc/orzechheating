@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Orzech Page Meta (Task task_mrl7wf0sj1mn06o3r7)
- * Description: Canonical, deployable source of titles + meta descriptions for the three commercial pages that are missing them. Defers to an active SEO plugin (Yoast/RankMath) to avoid duplicate meta tags; only fills gaps otherwise. This is the SINGLE source of truth — the root mu-plugins/orzech-meta-fallback.php and snippets/seo/meta-descriptions.php must NOT also emit meta.
+ * Description: Canonical, deployable source of titles + meta descriptions for the three commercial pages that are missing them. GUARANTEES a single non-empty <meta name="description"> renders on staging: it feeds Yoast/RankMath when their value is empty, and uses a late output-buffered wp_head fallback that injects our escaped description ONLY when no non-empty description tag was already emitted (prevents duplicates). This is the SINGLE source of truth — the root mu-plugins/orzech-meta-fallback.php and snippets/seo/meta-descriptions.php must NOT also emit meta.
  * Author: GIANT Agent Factory
- * Version: 2.0.0
+ * Version: 3.0.0
  *
  * Reviewed via draft PR; deploys to staging first. Production requires human approval.
  */
@@ -64,20 +64,15 @@ function orzech_current_page_meta() {
 }
 
 /**
- * Is a known SEO plugin active and handling meta output?
- */
-function orzech_seo_plugin_active() {
-	return defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' );
-}
-
-/**
- * Override the document title for mapped pages (only when no SEO plugin owns it).
+ * Override the document title for mapped pages, only when nothing else set it.
+ * We do not hard-defer to the SEO plugin here; if the plugin already sets a
+ * non-empty title WordPress will pass it through and we leave it alone.
  */
 add_filter(
 	'pre_get_document_title',
 	function ( $title ) {
-		if ( orzech_seo_plugin_active() ) {
-			return $title; // Let the SEO plugin own titles.
+		if ( ! empty( $title ) ) {
+			return $title; // Something (theme or SEO plugin) already set a title.
 		}
 		$meta = orzech_current_page_meta();
 		if ( $meta && ! empty( $meta['title'] ) ) {
@@ -89,29 +84,8 @@ add_filter(
 );
 
 /**
- * Print the meta description into the head for mapped pages.
- * Skipped when an SEO plugin is active to prevent duplicate tags.
- */
-add_action(
-	'wp_head',
-	function () {
-		if ( is_admin() || is_feed() ) {
-			return;
-		}
-		if ( orzech_seo_plugin_active() ) {
-			return;
-		}
-		$meta = orzech_current_page_meta();
-		if ( $meta && ! empty( $meta['description'] ) ) {
-			echo '<meta name="description" content="' . esc_attr( $meta['description'] ) . '" />' . "\n";
-		}
-	},
-	1
-);
-
-/**
- * If an SEO plugin IS active, feed it our descriptions only when it has none set,
- * so the value renders without creating duplicates.
+ * Feed Yoast its description only when it has none set for this page,
+ * so the value renders through the plugin without creating a duplicate.
  */
 add_filter(
 	'wpseo_metadesc',
@@ -125,6 +99,9 @@ add_filter(
 	20
 );
 
+/**
+ * Feed Rank Math its description only when it has none set for this page.
+ */
 add_filter(
 	'rank_math/frontend/description',
 	function ( $desc ) {
@@ -135,4 +112,63 @@ add_filter(
 		return ( $meta && ! empty( $meta['description'] ) ) ? $meta['description'] : $desc;
 	},
 	20
+);
+
+/**
+ * GUARANTEED fallback: buffer wp_head output at a late priority, inspect for an
+ * existing non-empty <meta name="description">, and inject ours only if none
+ * was emitted. This fixes the prior QA failure (no tag rendered when an SEO
+ * plugin was active but had no description) while preventing duplicate tags.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( is_admin() || is_feed() ) {
+			return;
+		}
+		$meta = orzech_current_page_meta();
+		if ( ! $meta || empty( $meta['description'] ) ) {
+			return;
+		}
+		// Start buffering the remainder of wp_head so we can inspect what other
+		// hooks (theme / SEO plugin) print before us.
+		ob_start(
+			function ( $buffer ) use ( $meta ) {
+				// Detect an existing NON-EMPTY meta description tag.
+				$has_desc = false;
+				if ( preg_match_all( '/<meta[^>]*name=["\']description["\'][^>]*>/i', $buffer, $matches ) ) {
+					foreach ( $matches[0] as $tag ) {
+						if ( preg_match( '/content=["\']([^"\']*)["\']/i', $tag, $c ) && '' !== trim( $c[1] ) ) {
+							$has_desc = true;
+							break;
+						}
+					}
+				}
+				if ( $has_desc ) {
+					return $buffer; // Leave existing non-empty tag untouched.
+				}
+				$tag = '<meta name="description" content="' . esc_attr( $meta['description'] ) . '" />' . "\n";
+				return $tag . $buffer;
+			}
+		);
+	},
+	0
+);
+
+add_action(
+	'wp_head',
+	function () {
+		if ( is_admin() || is_feed() ) {
+			return;
+		}
+		$meta = orzech_current_page_meta();
+		if ( ! $meta || empty( $meta['description'] ) ) {
+			return;
+		}
+		// Flush the buffer started at priority 0, running the injector callback.
+		if ( ob_get_level() > 0 ) {
+			@ob_end_flush();
+		}
+	},
+	PHP_INT_MAX
 );
