@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Orzech Page Meta (Task task_mrjt9sllf7zxc1zfww)
- * Description: Adds titles and meta descriptions to key commercial pages that are missing them. Defers to an active SEO plugin (Yoast/RankMath) to avoid duplicate meta tags; only fills gaps otherwise.
+ * Plugin Name: Orzech Page Meta (Task task_mrl7wf0sj1mn06o3r7)
+ * Description: Canonical, deployable source of titles + meta descriptions for the three commercial pages that are missing them. Defers to an active SEO plugin (Yoast/RankMath) to avoid duplicate meta tags; only fills gaps otherwise. This is the SINGLE source of truth — the root mu-plugins/orzech-meta-fallback.php and snippets/seo/meta-descriptions.php must NOT also emit meta.
  * Author: GIANT Agent Factory
- * Version: 1.0.0
+ * Version: 2.0.0
  *
  * Reviewed via draft PR; deploys to staging first. Production requires human approval.
  */
@@ -14,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Slug => meta map for the affected commercial pages.
- * Keys are matched against the request path (trailing slashes ignored).
+ * Keys are matched against the request path (trailing slashes ignored) and
+ * the queried object slug. Meta descriptions kept within ~150-160 characters.
  */
 function orzech_page_meta_map() {
 	return array(
@@ -44,7 +45,7 @@ function orzech_current_page_meta() {
 	$path = isset( $_SERVER['REQUEST_URI'] ) ? wp_parse_url( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ), PHP_URL_PATH ) : '';
 	$path = trim( (string) $path, '/' );
 
-	// Also try to match by queried object slug for reliability.
+	// Prefer matching by queried object slug for reliability.
 	$slug = '';
 	if ( is_page() || is_singular() ) {
 		$obj = get_queried_object();
@@ -70,7 +71,7 @@ function orzech_seo_plugin_active() {
 }
 
 /**
- * Override the document title for mapped pages.
+ * Override the document title for mapped pages (only when no SEO plugin owns it).
  */
 add_filter(
 	'pre_get_document_title',
@@ -94,6 +95,9 @@ add_filter(
 add_action(
 	'wp_head',
 	function () {
+		if ( is_admin() || is_feed() ) {
+			return;
+		}
 		if ( orzech_seo_plugin_active() ) {
 			return;
 		}
