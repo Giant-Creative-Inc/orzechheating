@@ -53,13 +53,12 @@ add_action( 'wp_head', function () {
   ],
   "sameAs": [
     "https://www.facebook.com/orzechheatingandcooling/",
-    "https://www.linkedin.com/company/orzech-heating-and-cooling/?originalSubdomain=ca",
-    "https://www.bbb.org/ca/on/london/profile/heating-and-air-conditioning/orzech-heating-cooling-inc-0187-1048562"
+    "https://www.linkedin.com/company/orzech-heating-and-cooling/?originalSubdomain=ca"
   ],
   "memberOf": [
-    {"@type":"Organization","name":"Better Business Bureau","url":"http://www.bbb.org/"},
-    {"@type":"Organization","name":"The Heating and Refrigeration Institute of Canada","url":"https://www.hrai.ca/"},
-    {"@type":"Organization","name":"Government Licensing Bodies; TSSA","url":"https://www.tssa.org/en/index.as"}
+    {"@type":"Organization","name":"Better Business Bureau"},
+    {"@type":"Organization","name":"The Heating, Refrigeration and Air Conditioning Institute of Canada","url":"https://www.hrai.ca/"},
+    {"@type":"Organization","name":"Technical Standards and Safety Authority (TSSA)"}
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
