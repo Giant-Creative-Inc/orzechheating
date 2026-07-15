@@ -64,3 +64,45 @@ add_filter( 'wpseo_metadesc', function ( $description ) {
 	// Pass through everything else unchanged.
 	return $description;
 }, 20 );
+
+/**
+ * Manage page-specific SEO title tags via Yoast's 'wpseo_title' filter.
+ *
+ * Yoast SEO owns the rendered <title> on this site, so titles are set via this
+ * filter rather than by editing a template. The filter is gated strictly per
+ * target path and returns the incoming title unchanged for every other path,
+ * so no other page's title is affected and only one <title> tag renders.
+ *
+ * Targets handled here:
+ *
+ * 1. heating/furnaces/ductwork-installation (Task task_mrmlji9dvi5dm3jh0i):
+ *    The current title is 70 chars:
+ *      "Ductwork Cleaning London ON | Installation & Airflow | Orzech HVAC"
+ *    It is shortened to a concise, accurate 46-char title that preserves the
+ *    primary service (ductwork installation), local intent (London, ON), and
+ *    brand. The page slug and breadcrumb label are "Ductwork Installation",
+ *    so installation is treated as the primary topic.
+ *      New title (46 chars):
+ *      "Ductwork Installation London ON | Orzech HVAC"
+ */
+add_filter( 'wpseo_title', function ( $title ) {
+	if ( ! is_page() ) {
+		return $title;
+	}
+
+	$permalink = get_permalink();
+	if ( ! $permalink ) {
+		return $title;
+	}
+
+	$path = wp_parse_url( $permalink, PHP_URL_PATH );
+	$path = is_string( $path ) ? trim( $path, '/' ) : '';
+
+	switch ( $path ) {
+		case 'heating/furnaces/ductwork-installation':
+			return 'Ductwork Installation London ON | Orzech HVAC';
+	}
+
+	// Pass through everything else unchanged.
+	return $title;
+}, 20 );
