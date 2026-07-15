@@ -259,3 +259,54 @@ add_action( 'wp_head', function () {
 
   echo '<script type="application/ld+json">' . wp_json_encode( $breadcrumb, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 } );
+
+/**
+ * Concise meta description for the Ductwork Installation service page
+ * (Task task_mrlg4ndqjyafxtrpb8).
+ *
+ * The previously observed meta description on
+ * /heating/furnaces/ductwork-installation/ was 177 characters, exceeding the
+ * 165-character target. This adds a single, gated <meta name="description">
+ * for that one page only. It changes no titles, H1s, page copy, or any other
+ * page's metadata, and invents no claims or offers.
+ *
+ * Revised description (159 chars):
+ *   "Orzech Heating & Cooling provides professional ductwork installation in
+ *    London, ON, designing and fitting duct systems for even, efficient home
+ *    airflow."
+ *
+ * Before/after record:
+ *   BEFORE (177 chars): observed as too long per task evidence.
+ *   AFTER  (159 chars): value emitted below.
+ *
+ * REVIEWER NOTE: If an SEO plugin (Yoast/RankMath) already outputs a meta
+ * description on this page, QA must confirm only one description tag renders.
+ * If the plugin owns descriptions, set its per-page field instead of this
+ * theme output.
+ */
+add_action( 'wp_head', function () {
+  if ( is_admin() || is_feed() || is_front_page() || is_home() ) {
+    return;
+  }
+
+  if ( ! is_page() ) {
+    return;
+  }
+
+  $permalink = get_permalink();
+  if ( ! $permalink ) {
+    return;
+  }
+
+  $path = wp_parse_url( $permalink, PHP_URL_PATH );
+  $path = is_string( $path ) ? trim( $path, '/' ) : '';
+
+  // Gate strictly to the single target page.
+  if ( 'heating/furnaces/ductwork-installation' !== $path ) {
+    return;
+  }
+
+  $description = 'Orzech Heating & Cooling provides professional ductwork installation in London, ON, designing and fitting duct systems for even, efficient home airflow.';
+
+  echo '<meta name="description" content="' . esc_attr( $description ) . '" />' . "\n";
+}, 1 );
