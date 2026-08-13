@@ -30,7 +30,12 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    row-gap: 12px;
+
+    > * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
   }
 
   &__eyebrow {
@@ -409,7 +414,7 @@
     }
 
     &__presets {
-      margin-top: -16px;
+      margin-top: -8px;
     }
 
     &__benefits {
@@ -418,7 +423,7 @@
 
     &__summary {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr) 141px;
       gap: 16px 6px;
       width: calc(100% - 32px);
       margin: 0 16px 40px;
@@ -512,11 +517,26 @@
       grid-row: 1;
       grid-column: 2;
       align-self: center;
+      width: 141px;
+      margin: 0;
+
+      .nectar-button-type,
+      .link_wrap {
+        display: block;
+        width: 100%;
+      }
 
       .link_wrap {
+        display: flex;
+        align-items: center;
         justify-content: center;
-        width: 141px;
         padding: 16px 32px !important;
+      }
+
+      .link_text {
+        display: block;
+        width: 100%;
+        text-align: center;
       }
     }
 
