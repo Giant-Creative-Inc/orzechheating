@@ -23,7 +23,7 @@ function orzech_register_finance_calculator_element() {
 					'type'        => 'textfield',
 					'heading'     => __( 'Default project cost', 'salient-child' ),
 					'param_name'  => 'default_amount',
-					'value'       => '3000',
+					'value'       => '3400',
 					'description' => __( 'Amount shown when the calculator loads.', 'salient-child' ),
 				),
 				array(
@@ -42,7 +42,14 @@ function orzech_register_finance_calculator_element() {
 					'type'       => 'textfield',
 					'heading'    => __( 'Slider increment', 'salient-child' ),
 					'param_name' => 'amount_step',
-					'value'      => '500',
+					'value'      => '100',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => __( 'Project cost presets', 'salient-child' ),
+					'param_name'  => 'presets',
+					'value'       => 'HVAC Repair|1000,Furnace/AC Replacement|6000,Furnace + AC Combo|12000,Full System + Ductwork|18000',
+					'description' => __( 'Comma-separated Label|Amount pairs. Leave blank to hide presets.', 'salient-child' ),
 				),
 				array(
 					'type'        => 'textfield',
@@ -62,7 +69,7 @@ function orzech_register_finance_calculator_element() {
 					'type'       => 'textfield',
 					'heading'    => __( 'Default amortization', 'salient-child' ),
 					'param_name' => 'default_term',
-					'value'      => '120',
+					'value'      => '180',
 				),
 				array(
 					'type'       => 'textfield',
@@ -85,13 +92,14 @@ add_shortcode( 'orzech_finance_calculator', 'orzech_render_finance_calculator' )
 function orzech_render_finance_calculator( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'default_amount' => '3000',
+			'default_amount' => '3400',
 			'minimum_amount' => '1000',
 			'maximum_amount' => '100000',
-			'amount_step'     => '500',
+			'amount_step'     => '100',
+			'presets'         => 'HVAC Repair|1000,Furnace/AC Replacement|6000,Furnace + AC Combo|12000,Full System + Ductwork|18000',
 			'apr'             => '9.99',
 			'terms'           => '12,24,36,48,60,72,84,96,108,120,132,144,156,168,180,240',
-			'default_term'    => '120',
+			'default_term'    => '180',
 			'apply_url'       => 'https://www.financeit.ca/en/direct/payment-plan/YT0yNzc0NzUmbD0mcD1lOTJfTjBCLWsxMjdVbWhHZE16c25BJnM9MCZ2PTE=/apply?slug=Z0kYPw',
 			'el_class'        => '',
 		),
@@ -111,6 +119,20 @@ function orzech_render_finance_calculator( $atts ) {
 			)
 		)
 	);
+	$presets         = array();
+
+	foreach ( explode( ',', $atts['presets'] ) as $preset ) {
+		$parts  = array_map( 'trim', explode( '|', $preset, 2 ) );
+		$label  = isset( $parts[0] ) ? sanitize_text_field( $parts[0] ) : '';
+		$amount = isset( $parts[1] ) ? (float) $parts[1] : 0;
+
+		if ( '' !== $label && $amount >= $minimum_amount && $amount <= $maximum_amount ) {
+			$presets[] = array(
+				'label'  => $label,
+				'amount' => $amount,
+			);
+		}
+	}
 
 	if ( empty( $terms ) ) {
 		$terms = array( 120 );
@@ -166,6 +188,17 @@ function orzech_render_finance_calculator( $atts ) {
 				value="<?php echo esc_attr( $default_amount ); ?>"
 				data-finance-range
 			>
+
+			<?php if ( ! empty( $presets ) ) : ?>
+				<div class="orzech-finance-calculator__presets" aria-label="Common project cost estimates">
+					<?php foreach ( $presets as $preset ) : ?>
+						<button type="button" data-finance-preset="<?php echo esc_attr( $preset['amount'] ); ?>" aria-pressed="false">
+							<span><?php echo esc_html( $preset['label'] ); ?></span>
+							<strong><?php echo esc_html( number_format_i18n( $preset['amount'], 0 ) ); ?></strong>
+						</button>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 
 			<div class="orzech-finance-calculator__field">
 				<label for="<?php echo esc_attr( $instance_id ); ?>-term">Amortization term:<sup>1</sup></label>

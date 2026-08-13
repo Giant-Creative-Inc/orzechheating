@@ -37,6 +37,7 @@
     const amountOutput = calculator.querySelector('[data-finance-amount]');
     const dailyOutput = calculator.querySelector('[data-finance-daily]');
     const monthlyOutputs = calculator.querySelectorAll('[data-finance-monthly]');
+    const presetButtons = calculator.querySelectorAll('[data-finance-preset]');
 
     if (!range || !term || !amountOutput || !dailyOutput || !monthlyOutputs.length) {
       return;
@@ -56,10 +57,20 @@
       });
       dailyOutput.textContent = currency.format(dailyPayment).replace(/\u00a0/g, '');
       range.style.setProperty('--range-progress', `${Math.max(0, Math.min(100, progress))}%`);
+      presetButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(Number(button.dataset.financePreset) === principal));
+      });
     };
 
     range.addEventListener('input', update);
     term.addEventListener('change', update);
+    presetButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        range.value = button.dataset.financePreset;
+        update();
+        range.focus({ preventScroll: true });
+      });
+    });
     calculator.dataset.financeCalculatorReady = 'true';
     update();
   };
