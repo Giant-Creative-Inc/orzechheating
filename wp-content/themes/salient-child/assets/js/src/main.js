@@ -46,6 +46,8 @@
     const minimumAmount = Number(calculator.dataset.amountMin);
     const maximumAmount = Number(calculator.dataset.amountMax);
     const amountStep = Number(calculator.dataset.amountStep);
+    const longTermThreshold = Number(calculator.dataset.longTermThreshold);
+    const longTermOption = term.querySelector('option[value="240"]');
 
     const positionToAmount = (position) => {
       if (maximumAmount === minimumAmount) {
@@ -68,6 +70,17 @@
 
     const update = () => {
       const principal = positionToAmount(Number(range.value));
+      const longTermIsEligible = principal > longTermThreshold;
+
+      if (longTermOption) {
+        longTermOption.disabled = !longTermIsEligible;
+
+        if (!longTermIsEligible && term.value === longTermOption.value) {
+          const eligibleTerms = Array.from(term.options).filter((option) => !option.disabled);
+          term.value = eligibleTerms.length ? eligibleTerms[eligibleTerms.length - 1].value : term.value;
+        }
+      }
+
       const months = Number(term.value);
       const apr = Number(calculator.dataset.apr);
       const monthlyPayment = calculateMonthlyPayment(principal, apr, months);

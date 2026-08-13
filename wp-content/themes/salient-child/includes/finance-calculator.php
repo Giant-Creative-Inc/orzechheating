@@ -72,6 +72,13 @@ function orzech_register_finance_calculator_element() {
 					'value'      => '180',
 				),
 				array(
+					'type'        => 'textfield',
+					'heading'     => __( '240-month minimum project cost', 'salient-child' ),
+					'param_name'  => 'long_term_threshold',
+					'value'       => '10000',
+					'description' => __( 'The 240-month term is available only when the project cost is above this amount.', 'salient-child' ),
+				),
+				array(
 					'type'       => 'textfield',
 					'heading'    => __( 'Apply button URL', 'salient-child' ),
 					'param_name' => 'apply_url',
@@ -100,6 +107,7 @@ function orzech_render_finance_calculator( $atts ) {
 			'apr'             => '9.99',
 			'terms'           => '12,24,36,48,60,72,84,96,108,120,132,144,156,168,180,240',
 			'default_term'    => '180',
+			'long_term_threshold' => '10000',
 			'apply_url'       => 'https://www.financeit.ca/en/direct/payment-plan/YT0yNzc0NzUmbD0mcD1lOTJfTjBCLWsxMjdVbWhHZE16c25BJnM9MCZ2PTE=/apply?slug=Z0kYPw',
 			'el_class'        => '',
 		),
@@ -112,6 +120,7 @@ function orzech_render_finance_calculator( $atts ) {
 	$amount_step     = max( 1, (float) $atts['amount_step'] );
 	$default_amount  = min( $maximum_amount, max( $minimum_amount, (float) $atts['default_amount'] ) );
 	$apr             = max( 0, (float) $atts['apr'] );
+	$long_term_threshold = max( 0, (float) $atts['long_term_threshold'] );
 	$terms           = array_values(
 		array_unique(
 			array_filter(
@@ -172,6 +181,7 @@ function orzech_render_finance_calculator( $atts ) {
 		data-amount-min="<?php echo esc_attr( $minimum_amount ); ?>"
 		data-amount-max="<?php echo esc_attr( $maximum_amount ); ?>"
 		data-amount-step="<?php echo esc_attr( $amount_step ); ?>"
+		data-long-term-threshold="<?php echo esc_attr( $long_term_threshold ); ?>"
 	>
 		<section class="orzech-finance-calculator__controls" aria-labelledby="<?php echo esc_attr( $instance_id ); ?>-title">
 			<header class="orzech-finance-calculator__header">
