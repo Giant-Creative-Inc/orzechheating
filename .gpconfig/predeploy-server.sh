@@ -85,18 +85,17 @@ timeout "$GP_DEPLOY_INSTALL_TIMEOUT" "${GP_DEPLOY_INSTALL_COMMAND[@]}"
 log "Building production theme assets"
 timeout "$GP_DEPLOY_BUILD_TIMEOUT" "${GP_DEPLOY_BUILD_COMMAND[@]}"
 
-shopt -s nullglob
-css_assets=("$THEME_DIR/$GP_DEPLOY_CSS_OUTPUT_DIR"/*.css)
-js_assets=("$THEME_DIR/$GP_DEPLOY_JS_OUTPUT_DIR"/*.js)
-(( ${#css_assets[@]} > 0 )) || fail "The build produced no CSS assets"
-(( ${#js_assets[@]} > 0 )) || fail "The build produced no JavaScript assets"
+build_assets=(
+  "$THEME_DIR/$GP_DEPLOY_CSS_OUTPUT_DIR/$GP_DEPLOY_CSS_OUTPUT_FILE"
+  "$THEME_DIR/$GP_DEPLOY_JS_OUTPUT_DIR/$GP_DEPLOY_JS_OUTPUT_FILE"
+)
 
-for asset in "${css_assets[@]}" "${js_assets[@]}"; do
+for asset in "${build_assets[@]}"; do
   [[ -s "$asset" ]] || fail "Build output is empty: $asset"
 done
 
 printf '%s\n' "$RELEASE_ID" > "$RELEASE_MARKER"
 chown -R "$SITE_USER:$SITE_GROUP" "$RELEASE_PATH"
 
-log "Validated ${#css_assets[@]} CSS and ${#js_assets[@]} JavaScript assets"
+log "Validated ${#build_assets[@]} production build assets"
 log "Release preparation completed successfully"
