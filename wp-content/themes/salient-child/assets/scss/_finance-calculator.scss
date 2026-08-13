@@ -64,7 +64,7 @@
     color: #000 !important;
     background: none !important;
     -webkit-text-fill-color: currentColor !important;
-    font: 700 36px/1 "Inter", sans-serif !important;
+    font: 700 36px/1.1 "Inter", sans-serif !important;
     letter-spacing: -1.44px !important;
     text-align: left !important;
   }
@@ -558,7 +558,7 @@
 }
 
 body[data-form-submit] .container-wrap .orzech-finance-calculator .orzech-finance-calculator__title {
-  font: 700 36px/1 "Inter", sans-serif !important;
+  font: 700 36px/1.1 "Inter", sans-serif !important;
 
   @include mobile {
     font-size: 32px !important;
