@@ -75,7 +75,7 @@
     -webkit-text-fill-color: transparent;
     margin-bottom: 0 !important;
     font-optical-sizing: auto;
-    padding-bottom: 0.08em !important;
+    padding-bottom: 0.12em !important;
     @include tablet {
       font: 700 52px/1.05 "Inter", sans-serif !important;
     }
@@ -100,7 +100,7 @@
   h4,
   h3 {
     font: 700 20px/1 "Inter", sans-serif !important;
-    padding-bottom: 0.08em !important;
+    padding-bottom: 0.12em !important;
     color: #000;
     letter-spacing: -1.12px !important;
     text-transform: none !important;
