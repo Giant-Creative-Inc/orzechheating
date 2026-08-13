@@ -1,0 +1,492 @@
+.orzech-finance-calculator {
+  --calculator-red: #e31837;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  font-family: "Inter", sans-serif;
+  color: #1c1c1c;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__controls,
+  &__summary {
+    min-width: 0;
+    padding: 48px;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    background: #fff;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.72px;
+
+    &::before {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #e31837 81.37%, #b2172f 100%);
+      content: "";
+    }
+  }
+
+  &#{&} &__title {
+    width: 100%;
+    margin: 0 !important;
+    color: #000 !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    font: 700 36px/1 "Inter", sans-serif !important;
+    letter-spacing: -1.44px !important;
+    text-align: left !important;
+  }
+
+  &__amount-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    label {
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.88px;
+    }
+  }
+
+  &__amount {
+    margin: 0;
+    color: #000;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2.08px;
+
+    small {
+      font-size: 24px;
+      letter-spacing: -0.96px;
+    }
+  }
+
+  &__range {
+    --range-progress: 2.02%;
+    width: 100%;
+    height: 36px;
+    margin: -14px 0;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: none;
+    background: transparent !important;
+    appearance: none;
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, var(--calculator-red) 0 var(--range-progress), #efefef var(--range-progress) 100%);
+    }
+
+    &::-webkit-slider-thumb {
+      width: 36px;
+      height: 36px;
+      margin-top: -14px;
+      border: 1px solid #eaeaea;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+      appearance: none;
+    }
+
+    &::-moz-range-track {
+      height: 8px;
+      border-radius: 4px;
+      background: #efefef;
+    }
+
+    &::-moz-range-progress {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--calculator-red);
+    }
+
+    &::-moz-range-thumb {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #eaeaea;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+    }
+
+    &:focus-visible::-webkit-slider-thumb {
+      outline: 3px solid rgba(0, 119, 206, 0.35);
+      outline-offset: 3px;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    label {
+      color: #000;
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: -0.8px;
+    }
+
+    sup {
+      font-size: 12px;
+    }
+
+    select {
+      width: 100%;
+      height: 62px;
+      margin: 0;
+      padding: 16px 56px 16px 24px !important;
+      border: 0 !important;
+      border-radius: 4px;
+      background: #f6f6f6 url("../images/finance-calculator/chevron.svg") no-repeat right 24px center / 18px 18px !important;
+      color: #505050;
+      font: 400 16px/1.5 "Inter", sans-serif;
+      letter-spacing: -0.64px;
+      appearance: none;
+    }
+  }
+
+  &__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+
+    li {
+      position: relative;
+      margin: 0;
+      padding-left: 34px;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: -0.72px;
+      list-style: none !important;
+
+      &::marker {
+        content: "";
+      }
+
+      &::before {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: url("../images/finance-calculator/checkmark.svg") center / contain no-repeat;
+        content: "";
+      }
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+    color: #fff;
+    background: linear-gradient(180deg, #0077ce 62.19%, #005c9f 125.6%);
+    box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.25);
+  }
+
+  &__results,
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__results p,
+  &__fine-print p {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+  }
+
+  &__results > div:first-child > p:first-child {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.96px;
+  }
+
+  &__results > div:last-child > p:first-child {
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: -0.72px;
+  }
+
+  &__results hr {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  &__daily,
+  &__monthly {
+    display: flex;
+    align-items: baseline;
+    margin-top: 12px !important;
+    white-space: nowrap;
+
+    strong {
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -2.56px;
+    }
+
+    span {
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+
+  &__daily {
+    strong { font-size: clamp(64px, 6vw, 86px); }
+    span { font-size: 32px; }
+  }
+
+  &__monthly {
+    strong { font-size: 52px; }
+    span { font-size: 24px; }
+  }
+
+  &__monthly-label-mobile {
+    display: none;
+  }
+
+  &__mobile-monthly {
+    display: none;
+  }
+
+  &__fine-print {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 12px;
+    line-height: 1.4;
+
+    p:first-child {
+      font-size: 13px;
+    }
+  }
+
+  @include tablet_down {
+    grid-template-columns: 1fr;
+
+    &#{&} &__title {
+      width: 100%;
+    }
+
+    &__controls,
+    &__summary {
+      padding: 32px;
+    }
+
+    &__controls {
+      gap: 36px;
+    }
+
+    &__summary {
+      gap: 36px;
+    }
+  }
+
+  @include mobile {
+    gap: 32px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: visible;
+    border-radius: 0;
+    background: #fff;
+
+    &__controls {
+      gap: 32px;
+      padding: 40px 16px 0;
+    }
+
+    &#{&} &__title {
+      font-size: 32px !important;
+      white-space: normal;
+      text-align: left;
+    }
+
+    &__amount-block label {
+      font-size: 16px;
+    }
+
+    &__amount {
+      font-size: 48px;
+
+      small {
+        font-size: 24px;
+      }
+    }
+
+    &__benefits {
+      display: none;
+    }
+
+    &__summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px 6px;
+      width: calc(100% - 32px);
+      margin: 0 16px 40px;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.25), 0 8px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    &__results,
+    &__actions {
+      display: contents;
+    }
+
+    &__results > div:first-child {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    &__results > div:first-child > p:first-child {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0;
+    }
+
+    &__daily {
+      margin-top: 0 !important;
+
+      strong {
+        font-size: 32px;
+        line-height: normal;
+        letter-spacing: 0;
+      }
+
+      span {
+        font-size: 20px;
+        line-height: normal;
+      }
+    }
+
+    &__results > div:last-child {
+      display: none;
+    }
+
+    &__mobile-monthly {
+      display: block;
+      margin-top: 0 !important;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0;
+
+      strong,
+      span {
+        font: inherit;
+      }
+    }
+
+    &__results > div:last-child > p:first-child {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0;
+
+      &::after {
+        content: " ";
+      }
+    }
+
+    &__monthly-label-desktop {
+      display: none;
+    }
+
+    &__monthly-label-mobile {
+      display: inline;
+    }
+
+    &__monthly {
+      margin-top: 0 !important;
+
+      strong,
+      span {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0;
+      }
+    }
+
+    &__actions > .nectar-cta {
+      grid-row: 1;
+      grid-column: 2;
+      align-self: center;
+
+      .link_wrap {
+        justify-content: center;
+        width: 141px;
+        padding: 16px 32px !important;
+      }
+    }
+
+    &__results hr {
+      grid-row: 2;
+      grid-column: 1 / -1;
+    }
+
+    &__fine-print {
+      grid-row: 3;
+      grid-column: 1 / -1;
+      font-size: 12px;
+
+      p:first-child {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+body[data-form-submit] .container-wrap .orzech-finance-calculator .orzech-finance-calculator__title {
+  font: 700 36px/1 "Inter", sans-serif !important;
+
+  @include mobile {
+    font-size: 32px !important;
+    text-align: left;
+  }
+}

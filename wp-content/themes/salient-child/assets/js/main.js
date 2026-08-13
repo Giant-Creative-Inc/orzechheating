@@ -3,6 +3,4 @@ Compiled file. Do not edit directly.
 Edit source in /assets/js/src/
 */
 
-// orzech-theme — JS source
-// This file is compiled to assets/js/main.js by `gulp build` / `gulp dev`.
-// Add page-specific or site-wide JS here.
+(()=>{const e=new Intl.NumberFormat("en-CA",{style:"currency",currency:"CAD",minimumFractionDigits:2,maximumFractionDigits:2}),t=new Intl.NumberFormat("en-CA",{style:"currency",currency:"CAD",minimumFractionDigits:0,maximumFractionDigits:0}),a=a=>{if("true"===a.dataset.financeCalculatorReady)return;const n=a.querySelector("[data-finance-range]"),r=a.querySelector("[data-finance-term]"),c=a.querySelector("[data-finance-amount]"),u=a.querySelector("[data-finance-daily]"),o=a.querySelectorAll("[data-finance-monthly]");if(!(n&&r&&c&&u&&o.length))return;const i=()=>{const i=Number(n.value),m=Number(r.value),l=((e,t,a)=>{const n=t/100/12;return 0===n?e/a:e*n/(1-Math.pow(1+n,-a))})(i,Number(a.dataset.apr),m),d=12*l/365,s=(i-Number(n.min))/(Number(n.max)-Number(n.min))*100;c.textContent=t.format(i).replace(/\u00a0/g,""),o.forEach(t=>{t.textContent=e.format(l).replace(/\u00a0/g,"")}),u.textContent=e.format(d).replace(/\u00a0/g,""),n.style.setProperty("--range-progress",`${Math.max(0,Math.min(100,s))}%`)};n.addEventListener("input",i),r.addEventListener("change",i),a.dataset.financeCalculatorReady="true",i()},n=()=>{document.querySelectorAll("[data-finance-calculator]").forEach(a)};"loading"===document.readyState?document.addEventListener("DOMContentLoaded",n):n()})();

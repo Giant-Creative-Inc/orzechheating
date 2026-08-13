@@ -7,6 +7,7 @@ require_once get_stylesheet_directory() . '/includes/critical-css.php';
 require_once get_stylesheet_directory() . '/includes/form-validation.php';
 require_once get_stylesheet_directory() . '/includes/schema.php';
 require_once get_stylesheet_directory() . '/includes/misc.php';
+require_once get_stylesheet_directory() . '/includes/finance-calculator.php';
 
 /**
  * Manage page-specific SEO meta descriptions via Yoast's 'wpseo_metadesc'
