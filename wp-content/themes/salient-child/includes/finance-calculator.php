@@ -148,6 +148,9 @@ function orzech_render_finance_calculator( $atts ) {
 		? $default_amount / $default_term
 		: $default_amount * $monthly_rate / ( 1 - pow( 1 + $monthly_rate, -$default_term ) );
 	$daily_payment  = $monthly_payment * 12 / 365;
+	$slider_position = $maximum_amount === $minimum_amount
+		? 0
+		: 100 * log( $default_amount / $minimum_amount ) / log( $maximum_amount / $minimum_amount );
 	$instance_id    = wp_unique_id( 'orzech-finance-calculator-' );
 	$classes        = trim( 'orzech-finance-calculator ' . sanitize_html_class( $atts['el_class'] ) );
 	$script_path    = get_stylesheet_directory() . '/assets/js/main.js';
@@ -166,6 +169,9 @@ function orzech_render_finance_calculator( $atts ) {
 		class="<?php echo esc_attr( $classes ); ?>"
 		data-finance-calculator
 		data-apr="<?php echo esc_attr( $apr ); ?>"
+		data-amount-min="<?php echo esc_attr( $minimum_amount ); ?>"
+		data-amount-max="<?php echo esc_attr( $maximum_amount ); ?>"
+		data-amount-step="<?php echo esc_attr( $amount_step ); ?>"
 	>
 		<section class="orzech-finance-calculator__controls" aria-labelledby="<?php echo esc_attr( $instance_id ); ?>-title">
 			<header class="orzech-finance-calculator__header">
@@ -182,10 +188,11 @@ function orzech_render_finance_calculator( $atts ) {
 				class="orzech-finance-calculator__range"
 				id="<?php echo esc_attr( $instance_id ); ?>-amount"
 				type="range"
-				min="<?php echo esc_attr( $minimum_amount ); ?>"
-				max="<?php echo esc_attr( $maximum_amount ); ?>"
-				step="<?php echo esc_attr( $amount_step ); ?>"
-				value="<?php echo esc_attr( $default_amount ); ?>"
+				min="0"
+				max="100"
+				step="0.1"
+				value="<?php echo esc_attr( $slider_position ); ?>"
+				aria-valuetext="$<?php echo esc_attr( number_format_i18n( $default_amount, 0 ) ); ?>"
 				data-finance-range
 			>
 

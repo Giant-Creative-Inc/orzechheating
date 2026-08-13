@@ -43,13 +43,36 @@
       return;
     }
 
+    const minimumAmount = Number(calculator.dataset.amountMin);
+    const maximumAmount = Number(calculator.dataset.amountMax);
+    const amountStep = Number(calculator.dataset.amountStep);
+
+    const positionToAmount = (position) => {
+      if (maximumAmount === minimumAmount) {
+        return minimumAmount;
+      }
+
+      const rawAmount = minimumAmount * Math.pow(maximumAmount / minimumAmount, position / 100);
+      const roundedAmount = Math.round(rawAmount / amountStep) * amountStep;
+      return Math.max(minimumAmount, Math.min(maximumAmount, roundedAmount));
+    };
+
+    const amountToPosition = (amount) => {
+      if (maximumAmount === minimumAmount) {
+        return 0;
+      }
+
+      const clampedAmount = Math.max(minimumAmount, Math.min(maximumAmount, amount));
+      return 100 * Math.log(clampedAmount / minimumAmount) / Math.log(maximumAmount / minimumAmount);
+    };
+
     const update = () => {
-      const principal = Number(range.value);
+      const principal = positionToAmount(Number(range.value));
       const months = Number(term.value);
       const apr = Number(calculator.dataset.apr);
       const monthlyPayment = calculateMonthlyPayment(principal, apr, months);
       const dailyPayment = monthlyPayment * 12 / 365;
-      const progress = (principal - Number(range.min)) / (Number(range.max) - Number(range.min)) * 100;
+      const progress = Number(range.value);
 
       amountOutput.textContent = wholeCurrency.format(principal).replace(/\u00a0/g, '');
       monthlyOutputs.forEach((monthlyOutput) => {
@@ -57,6 +80,7 @@
       });
       dailyOutput.textContent = currency.format(dailyPayment).replace(/\u00a0/g, '');
       range.style.setProperty('--range-progress', `${Math.max(0, Math.min(100, progress))}%`);
+      range.setAttribute('aria-valuetext', wholeCurrency.format(principal).replace(/\u00a0/g, ''));
       presetButtons.forEach((button) => {
         button.setAttribute('aria-pressed', String(Number(button.dataset.financePreset) === principal));
       });
@@ -66,7 +90,7 @@
     term.addEventListener('change', update);
     presetButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        range.value = button.dataset.financePreset;
+        range.value = amountToPosition(Number(button.dataset.financePreset));
         update();
         range.focus({ preventScroll: true });
       });
