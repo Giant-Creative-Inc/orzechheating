@@ -194,7 +194,7 @@ function orzech_render_finance_calculator( $atts ) {
 					<?php foreach ( $presets as $preset ) : ?>
 						<button type="button" data-finance-preset="<?php echo esc_attr( $preset['amount'] ); ?>" aria-pressed="false">
 							<span><?php echo esc_html( $preset['label'] ); ?></span>
-							<strong><?php echo esc_html( number_format_i18n( $preset['amount'], 0 ) ); ?></strong>
+							<strong>$<?php echo esc_html( number_format_i18n( $preset['amount'], 0 ) ); ?></strong>
 						</button>
 					<?php endforeach; ?>
 				</div>
