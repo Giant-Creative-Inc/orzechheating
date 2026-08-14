@@ -654,7 +654,7 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         &:before {
           border-color: #fff;
           right: auto;
-          left: calc(50% + 4px);
+          left: calc(50% + 1px);
           transform: translate(-50%, -50%) rotate(-135deg);
         }
         &:after {
@@ -665,7 +665,7 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         right: 64px;
         left: auto;
         &:before {
-          left: calc(50% - 4px);
+          left: calc(50% - 1px);
           transform: translate(-50%, -50%) rotate(45deg);
         }
         &:focus:before,
