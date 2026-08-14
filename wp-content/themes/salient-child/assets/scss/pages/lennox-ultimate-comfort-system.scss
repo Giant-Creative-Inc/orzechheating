@@ -208,13 +208,13 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
   &__hero {
     @include mobile {
       > .row_col_wrap_12 {
-        padding-bottom: 180px !important;
+        padding-bottom: clamp(180px, 50vw, 500px) !important;
       }
     }
     @include tablet {
       > .row_col_wrap_12 {
         padding-top: 48px !important;
-        padding-bottom: 260px !important;
+        padding-bottom: clamp(180px, 50vw, 500px) !important;
       }
     }
     @include desktop {
