@@ -118,9 +118,10 @@
   .wpb_text_column:not(.hero-subtext):not(.large):not(.kicker):not(.disclamer-text) {
     color: #1C1C1C !important;
     font: 400 16px/1.5 "Inter", sans-serif !important;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.6px;
     @include tablet {
       font: 400 18px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.8px;
     }
     @include desktop {
       font: 400 20px/1.5 "Inter", sans-serif !important;
