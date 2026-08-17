@@ -52,8 +52,8 @@ function salient_child_enqueue_styles() {
     );
   }
 
-  // Inter font — maintenance-plan & lennox-ultimate-comfort-system pages
-  if ( is_page( array( 'maintenance-plan', 'lennox-ultimate-comfort-system' ) ) ) {
+  // Inter font — maintenance plan and promotions landing pages.
+  if ( is_page( array( 'maintenance-plan', 'lennox-ultimate-comfort-system', 'promotions' ) ) ) {
     wp_enqueue_style(
       'orzech-inter-font',
       'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
@@ -83,11 +83,14 @@ function salient_child_enqueue_styles() {
   }
 
   if ( $slug ) {
-    $page_css = get_stylesheet_directory() . "/assets/css/{$slug}.min.css";
+    // The promotions page was renamed from lennox-ultimate-comfort-system.
+    // Keep using its existing compiled stylesheet without duplicating the asset.
+    $page_css_slug = 'promotions' === $slug ? 'lennox-ultimate-comfort-system' : $slug;
+    $page_css      = get_stylesheet_directory() . "/assets/css/{$page_css_slug}.min.css";
     if ( file_exists( $page_css ) ) {
       wp_enqueue_style(
         "orzech-{$slug}-style",
-        get_stylesheet_directory_uri() . "/assets/css/{$slug}.min.css",
+        get_stylesheet_directory_uri() . "/assets/css/{$page_css_slug}.min.css",
         array(),
         filemtime( $page_css )
       );

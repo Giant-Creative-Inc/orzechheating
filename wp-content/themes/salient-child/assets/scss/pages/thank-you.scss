@@ -51,6 +51,31 @@
       font: 500 32px/1.2 "Inter", sans-serif !important;
     }
   }
+  .link_wrap {
+    border-radius: 1000px !important;
+    background: linear-gradient(180deg, #E31837 81.37%, #B2172F 100%) !important;
+    box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset !important;
+    @include mobile {
+      padding: 14px 24px !important
+    }
+    a {
+      font: 600 14px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.64px;
+      background: linear-gradient(180deg, #FFF 33.33%, rgba(255, 255, 255, 0.75) 74.07%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @include tablet {
+        font-size: 16px !important;
+      }
+      @include desktop {
+        font-size: 16px !important;
+      }
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 body[data-form-submit=regular] .container-wrap .lennox-promo {
   &__first-section {

@@ -68,16 +68,17 @@
   h2,
   h1 {
     font: 700 32px/1.05 "Inter", sans-serif !important;
-    letter-spacing: -2.56px;
+    letter-spacing: -1px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 9.09%, #000 87.34%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0 !important;
     font-optical-sizing: auto;
-    margin-bottom: -0.05em;
+    padding-bottom: 0.12em !important;
     @include tablet {
       font: 700 52px/1.05 "Inter", sans-serif !important;
+      letter-spacing: -2.56px;
     }
     @include sm_desktop {
       font: 700 58px/1.05 "Inter", sans-serif !important;
@@ -100,6 +101,7 @@
   h4,
   h3 {
     font: 700 20px/1 "Inter", sans-serif !important;
+    padding-bottom: 0.12em !important;
     color: #000;
     letter-spacing: -1.12px !important;
     text-transform: none !important;
@@ -117,9 +119,10 @@
   .wpb_text_column:not(.hero-subtext):not(.large):not(.kicker):not(.disclamer-text) {
     color: #1C1C1C !important;
     font: 400 16px/1.5 "Inter", sans-serif !important;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.6px;
     @include tablet {
       font: 400 18px/1.5 "Inter", sans-serif !important;
+      letter-spacing: -0.8px;
     }
     @include desktop {
       font: 400 20px/1.5 "Inter", sans-serif !important;
@@ -206,13 +209,13 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
   &__hero {
     @include mobile {
       > .row_col_wrap_12 {
-        padding-bottom: 180px !important;
+        padding-bottom: clamp(180px, 50vw, 500px) !important;
       }
     }
     @include tablet {
       > .row_col_wrap_12 {
         padding-top: 48px !important;
-        padding-bottom: 260px !important;
+        padding-bottom: clamp(180px, 50vw, 500px) !important;
       }
     }
     @include desktop {
@@ -483,6 +486,18 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
               max-width: none;
               margin-left: -23%;
             }
+            @include desktop {
+              width: 111% !important;
+              margin-left: -11%;
+            }
+            @include xl_desktop {
+              width: 120% !important;
+              margin-left: -20%;
+            }
+            @include desktop_4k {
+              width: 123% !important;
+              margin-left: -23%;
+            }
           }
           @include mobile {
             max-width: 43%;
@@ -573,14 +588,9 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         }
       }
     }
-    .link_wrap {
-      &::before {
-        content: '';
-        width: 22px;
-        height: 22px;
-        aspect-ratio: 1/1;
-        margin-right: 6px;;
-        background: url('https://orzechheating.ca/wp-content/uploads/2026/06/Chat-1.svg') no-repeat center;
+    .why-choose-video-bg {
+      .yt-bg-inner iframe {
+        transform: translateX(-25%);
       }
     }
   }
@@ -620,10 +630,12 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
           background-color: #000;
           position: absolute;
           height: 2.5px;
+          left: 50%;
           top: 50%;
-          margin-top: -1.2px;
+          margin: 0;
           width: 15px;
           content: '';
+          transform: translate(-50%, -50%);
           transition: transform .45s cubic-bezier(.15, .75, .5, 1);
           display: block;
         }
@@ -631,6 +643,8 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
           border-color: #000;
           border-bottom-width: 2px;
           border-left-width: 2px;
+          margin: 0;
+          top: 50%;
         }
       }
       .ti-next {
@@ -639,21 +653,20 @@ body[data-form-submit=regular] .container-wrap .lennox-promo {
         box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.25) inset;
         &:before {
           border-color: #fff;
-          right: 18.9px;
-          transform: translate(-70%, -49%) rotate(-135deg);
-          margin-left: 6px;
+          right: auto;
+          left: calc(50% + 1px);
+          transform: translate(-50%, -50%) rotate(-135deg);
         }
         &:after {
           background-color: #fff;
-          margin-left: 4px;
         }
       }
       .ti-prev {
         right: 78px;
         left: auto;
         &:before {
-          left: 18.9px;
-          transform: translate(-30%, -49%) rotate(45deg);
+          left: calc(50% - 1px);
+          transform: translate(-50%, -50%) rotate(45deg);
         }
         &:focus:before,
         &:hover:before {
